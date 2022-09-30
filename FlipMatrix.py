@@ -2,7 +2,6 @@ class FlipMatrix:
 
     # FlipMatrix structure:
     matrix = []
-    flipped = False
 
     size_x = 0
     size_y = 0
@@ -96,7 +95,6 @@ class FlipMatrix:
         :param y: The Y coordinate
         :return: Return coordinates as tuple (diagonal array position, pos in diagonal array).
         '''
-        ## TODO: Convert the coordinates.
 
         row = 0
         pos_in_row = 0
@@ -122,6 +120,14 @@ class FlipMatrix:
         #print(str(row) + " " + str(pos_in_row) + " " + str(value))
         return value
 
+    def transpose(self):
+        #self.matrix = \
+        self.matrix.reverse()
+        copy_x = self.size_x
+        self.size_x = self.size_y
+        self.size_y = copy_x
+
+
 # Dev code:
 arr_in = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12]]
 f = FlipMatrix()
@@ -133,6 +139,17 @@ for y in range(4):
         cord = f.convert_coordinates(x, y)
         value = f.value_at_coordinate(x, y)
         print(str(x) + "\t" + str(y) + "\t\t" + str(cord[0]) + "\t" + str(cord[1]) + "\t" + str(value))
+
+print("")
+
+f.transpose()
+
+for y in range(3):
+    for x in range(4):
+        cord = f.convert_coordinates(x, y)
+        value = f.value_at_coordinate(x, y)
+        print(str(x) + "\t" + str(y) + "\t\t" + str(cord[0]) + "\t" + str(cord[1]) + "\t" + str(value))
+
 
 #val = f.value_at_coordinate(0, 0)
 #print(val)
